@@ -28,6 +28,7 @@ functions:
 
 custom:
   pythonRequirements:
+    usePip: true
     pythonBin: python3.12
     noDeploy:
       - boto3 # already on Lambda
