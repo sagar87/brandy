@@ -68,14 +68,14 @@ jobs:
         run: uv run ruff check --output-format=github api
       - name: Run bandit
         run: uv run bandit api
-  deploy-development:  # new
-    needs: [ test, code-quality ]
+  deploy-development: # new
+    needs: [test, code-quality]
     strategy:
       fail-fast: false
       matrix:
         python-version: [3.12]
         uv-version: ["0.6.16"]
-        node-version: [16]
+        node-version: [18]
         os: [ubuntu-latest]
     runs-on: ${{ matrix.os }}
     defaults:

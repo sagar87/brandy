@@ -13,8 +13,8 @@ provider:
 
 functions:
   API:
-    handler: main.handle
-    module: api
+    handler: api.main.handle
+    # module: api
     timeout: 10
     memorySize: 512
     events:
