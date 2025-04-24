@@ -92,6 +92,8 @@ jobs:
         uses: astral-sh/setup-uv@v5
         with:
           uv-version: ${{ matrix.uv-version }}
+      - name: Export dependencies
+        run: uv export --no-dev --frozen -o requirements.txt
       - uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}

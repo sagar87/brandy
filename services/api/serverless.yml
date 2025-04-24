@@ -14,7 +14,8 @@ provider:
 
 functions:
   API:
-    handler: api.main.handle
+    handler: main.handle
+    module: api
     timeout: 10
     memorySize: 512
     events:
@@ -27,7 +28,6 @@ functions:
 
 custom:
   pythonRequirements:
-    usePoetry: true
     noDeploy:
       - boto3 # already on Lambda
       - botocore # already on Lambda
