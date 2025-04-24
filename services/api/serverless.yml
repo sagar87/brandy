@@ -5,7 +5,7 @@ useDotenv: true
 
 provider:
   name: aws
-  runtime: python3.9
+  runtime: python3.12
   region: ${opt:region, 'eu-north-1'}
   stage: ${opt:stage, 'development'}
   logRetentionInDays: 90
@@ -28,6 +28,7 @@ functions:
 
 custom:
   pythonRequirements:
+    pythonBin: python3.12
     noDeploy:
       - boto3 # already on Lambda
       - botocore # already on Lambda
