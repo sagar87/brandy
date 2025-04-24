@@ -1,5 +1,6 @@
 service: brandy-api
 
+frameworkVersion: "3"
 useDotenv: true
 
 provider:
