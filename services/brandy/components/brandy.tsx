@@ -2,6 +2,9 @@
 import React from "react";
 import Form from "./form";
 import Results from "./results";
+import Image from "next/image";
+// import logo from "../public/brandy.png";
+import logo from "../public/brandy_alt.png";
 
 const Brandy: React.FC = () => {
   const SNIPPET: string =
@@ -63,12 +66,31 @@ const Brandy: React.FC = () => {
       />
     );
   }
+  const gradientTextStyle =
+    "bg-gradient-to-r from-blue-600 via-green-500 to-indigo-400 inline-block text-transparent bg-clip-text";
 
   return (
-    <>
-      <h1>Brandy</h1>
-      {displayedElement}
-    </>
+    <div className="h-screen flex">
+      <div className="max-w-md m-auto p-2">
+        <div className="bg-gray-900 p-6 rounded-md text-white">
+          <div className="text-center my-6">
+            <center>
+              <Image src={logo} width={64} height={64} alt="logo" />
+            </center>
+            <h1
+              className={gradientTextStyle + " text-3xl font-light w-fit my-1"}
+            >
+              Brandy
+            </h1>
+            <br />
+            <div className={gradientTextStyle + " text-sm"}>
+              Your favorite AI branding assistant.
+            </div>
+          </div>
+          {displayedElement}
+        </div>
+      </div>
+    </div>
   );
 };
 
