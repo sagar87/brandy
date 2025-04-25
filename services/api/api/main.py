@@ -1,8 +1,17 @@
+import os
+from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from mangum import Mangum
 
-app = FastAPI()
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """Initialize application services"""
+    # await db.init()
+    yield
+
+app = FastAPI(lifespan=lifespan)
 
 app.add_middleware(
     CORSMiddleware,
@@ -12,10 +21,15 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+handler = Mangum(app)
 
-@app.get("/api/health-check/")
+
+@app.get("/health-check/")
 def health_check():
     return {"message": "OK"}
 
 
-handle = Mangum(app)  # new
+@app.get("/test/")
+def test():
+    res = os.getenv("OPENAI_MODEL", "IT DID NOT FUCKING WORK")
+    return {"message": f"Just wanted to ensure everything is working. {res}"}
